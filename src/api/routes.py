@@ -5,6 +5,7 @@ from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User
 from api.utils import generate_sitemap, APIException
 from flask_cors import CORS
+from api.dict_ai import get_word_info
 
 api = Blueprint('api', __name__)
 
@@ -20,3 +21,9 @@ def handle_hello():
     }
 
     return jsonify(response_body), 200
+
+@api.route('/diccionario/<string:word>', methods=['GET'])
+def getWord(word):
+    if word:
+        return jsonify(get_word_info(word), 200)
+    return jsonify({'error': 'Se tiene que enviar una palabra'})

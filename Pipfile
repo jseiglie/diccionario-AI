@@ -18,6 +18,8 @@ gunicorn = "*"
 cloudinary = "*"
 flask-admin = "*"
 typing-extensions = "*"
+openai = "*"
+googletrans = "==4.0.0-rc1"
 
 [requires]
 python_version = "3.10"
